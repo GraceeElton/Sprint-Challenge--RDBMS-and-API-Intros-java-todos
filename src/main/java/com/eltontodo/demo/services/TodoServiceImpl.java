@@ -34,6 +34,8 @@ public class TodoServiceImpl implements TodoService
                 .orElseThrow(() -> new EntityNotFoundException("Todo " + id + " not found"));
     }
 
+
+
     @Transactional
     @Override
     public Todo save(Todo todo)
@@ -49,6 +51,30 @@ public class TodoServiceImpl implements TodoService
     @Override
     public Todo update(Todo todo, long id)
     {
-        return null;
+        Todo currentTodo = trepo.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Todo " + id + " not found"));
+
+        if (todo.getDescription() != null)
+        {
+            currentTodo.setDescription(todo.getDescription());
+        }
+        if (todo.getUser() != null)
+        {
+            currentTodo.setUser(todo.getUser());
+        }
+
+        // for boolean!
+
+
+        if (todo.isCompleted())
+        {
+            currentTodo.setCompleted(true);
+        } else {
+            currentTodo.setCompleted(false);
+
+        }
+
+        return trepo.save(currentTodo);
+
     }
 }

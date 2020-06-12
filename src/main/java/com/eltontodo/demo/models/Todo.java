@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name= "todo")
-public class Todo
+public class Todo extends Aud
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -14,7 +14,7 @@ public class Todo
 
     @Column
     private String description;
-    private boolean completed = false;
+    private boolean completed;
 
     @ManyToOne()
     @JoinColumn(name = "userid", nullable = false)
@@ -31,6 +31,7 @@ public class Todo
         this.user = user;
         this.description =description;
     }
+
 
     public Todo(String description, boolean completed, User user)
     {
@@ -78,4 +79,6 @@ public class Todo
     {
         this.user = user;
     }
+
+
 }

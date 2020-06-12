@@ -69,4 +69,12 @@ public class UserContoller
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    // get http://localhost:2019/users/users/todos with query selectors
+
+    @GetMapping(value = "/users/todos", produces = {"application/json"})
+    public ResponseEntity<?> count()
+    {
+        return new ResponseEntity<>(userService.getCount(), HttpStatus.OK);
+    }
+
 }
