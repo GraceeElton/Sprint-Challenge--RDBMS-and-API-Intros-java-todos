@@ -3,6 +3,7 @@ package com.eltontodo.demo.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name= "todo")
@@ -38,6 +39,11 @@ public class Todo extends Aud
         this.description = description;
         this.completed = completed;
         this.user = user;
+    }
+
+    public Date getCreatedate()
+    {
+        return datecreated;
     }
 
     public long getTodoid()

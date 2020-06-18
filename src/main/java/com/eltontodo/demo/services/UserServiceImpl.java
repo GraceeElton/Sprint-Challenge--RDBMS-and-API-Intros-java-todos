@@ -3,7 +3,7 @@ package com.eltontodo.demo.services;
 import com.eltontodo.demo.models.Todo;
 import com.eltontodo.demo.models.User;
 import com.eltontodo.demo.repos.UserRepo;
-import com.eltontodo.demo.views.JustTheCount;
+import com.eltontodo.demo.views.UserCountTodos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -70,13 +70,22 @@ public class UserServiceImpl implements UserService
         }
 
     }
-    @Transactional
-    @Override
-    public List<JustTheCount> getCount()
-    {
+//    @Transactional
+//    @Override
+//    public List<JustTheCount> getCount()
+//    {
+//
+//    }
 
+    @Override
+    public List<UserCountTodos> getCountoftodos()
+    {
         return urepo.getCountTodo();
     }
 
-
+    @Override
+    public List<UserCountTodos> getusernamerpt()
+    {
+        return urepo.getCountTodo();
+    }
 }

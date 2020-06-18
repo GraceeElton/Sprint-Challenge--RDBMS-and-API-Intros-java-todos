@@ -3,6 +3,7 @@ package com.eltontodo.demo.contollers;
 
 import com.eltontodo.demo.models.User;
 import com.eltontodo.demo.services.UserService;
+import com.eltontodo.demo.views.UserCountTodos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -69,12 +70,14 @@ public class UserContoller
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+
     // get http://localhost:2019/users/users/todos with query selectors
 
     @GetMapping(value = "/users/todos", produces = {"application/json"})
-    public ResponseEntity<?> count()
+    public ResponseEntity<?> gettodoCount()
     {
-        return new ResponseEntity<>(userService.getCount(), HttpStatus.OK);
+        List<UserCountTodos> mylist = userService.getCountoftodos();
+        return new ResponseEntity<>(mylist, HttpStatus.OK);
     }
 
 }
